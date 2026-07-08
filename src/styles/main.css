@@ -1,0 +1,284 @@
+@import url('./entry.css');
+
+.page {
+  display: none;
+  opacity: 0;
+}
+
+.page-visible {
+  display: block;
+}
+
+.page-section {
+  padding: 32px 24px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 32px;
+  font-family: var(--font-family-handwritten);
+  text-align: center;
+  margin: 0 0 6px;
+}
+
+.page-title::first-letter {
+  font-size: 42px;
+}
+
+.page-text {
+  text-align: center;
+}
+
+.page-text + .page-text {
+  margin-top: 12px;
+}
+
+.calendar {
+  position: relative;
+  width: min(100%, 280px);
+  margin: 40px auto 0;
+  padding: 0 20px 18px;
+  color: var(--default-color);
+  text-align: center;
+}
+
+.calendar::before,
+.calendar::after {
+  content: "";
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-color: var(--eyebrow-color);
+  opacity: 0.9;
+}
+
+.calendar::before {
+  right: 0;
+  top: 6px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.calendar::after {
+  left: 0;
+  bottom: 0;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.calendar-title {
+  margin: 0 0 8px;
+  font-family: var(--font-family-handwritten);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.calendar-title::first-letter {
+  font-size: 56px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 3px 5px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.calendar-weekday,
+.calendar-day {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1;
+}
+
+.calendar-weekday {
+  font-weight: 500;
+}
+
+.calendar-day {
+  font-family: var(--font-family-monospace);
+}
+
+.calendar-day-first {
+  grid-column: 6;
+}
+
+.calendar-day-selected {
+  position: relative;
+  color: var(--surface-background);
+}
+
+.calendar-day-selected-icon {
+  position: absolute;
+  width: 22px;
+  height: 20px;
+  color: var(--on-surface);
+  fill: currentcolor;
+  top: 7px;
+}
+
+.calendar-day-selected-text {
+  position: relative;
+}
+
+.wedding-steps {
+  width: min(100%, 720px);
+  margin: 24px auto 0;
+}
+
+.wedding-steps svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.wedding-steps-step {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.wedding-steps-step-visible {
+  opacity: 1;
+}
+
+.dresscode-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px auto 0;
+}
+
+.dresscode-icon {
+  width: clamp(72px, 24vw, 112px);
+  height: auto;
+}
+
+.dresscode-palette {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 48px));
+  justify-content: center;
+  gap: 10px;
+  margin: 24px auto 0;
+}
+
+.dresscode-color {
+  display: block;
+  height: 14px;
+}
+
+.dresscode-color-sand {
+  background-color: #e1d1ba;
+}
+
+.dresscode-color-ivory {
+  background-color: #e9e5d9;
+}
+
+.dresscode-color-olive {
+  background-color: #6b7262;
+}
+
+.dresscode-color-gray {
+  background-color: #757671;
+}
+
+.dresscode-color-brown {
+  background-color: #6c4b2c;
+}
+
+.details-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.details-section-ornament {
+  stroke: var(--default-color);
+  width: 50%;
+  margin: auto;
+  margin-top: 16px; 
+}
+
+.place-section {
+  padding: 0;
+  padding-top: 24px;
+}
+
+.place-section .page-title {
+  margin-bottom: 16px;
+}
+
+.place-section-background {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 170px;
+  overflow: hidden;
+  color: #e9e5d9;
+  isolation: isolate;
+}
+
+.place-section-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(54 50 44 / 34%),
+      rgb(54 50 44 / 50%)
+    );
+}
+
+.place-section-img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.place-section-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 360px);
+  padding: 34px 24px;
+  text-align: center;
+}
+
+.place-section-text {
+  margin: 0;
+  color: currentcolor;
+  text-shadow: 0 1px 6px rgb(39 35 30 / 48%);
+}
+
+.place-section-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 148px;
+  min-height: 36px;
+  padding: 8px 22px;
+  border: 1px solid rgb(233 229 217 / 70%);
+  border-radius: 999px;
+  background-color: rgb(225 209 186 / 42%);
+  color: #fffaee;
+  font: inherit;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: 0 1px 5px rgb(39 35 30 / 42%);
+  backdrop-filter: blur(2px);
+}
+
+.place-section-button:hover {
+  background-color: rgb(225 209 186 / 58%);
+}
+

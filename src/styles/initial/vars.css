@@ -1,0 +1,11 @@
+:root {
+  --font-family-handwritten: "Great Vibes", "Times New Roman", serif;
+  --font-family-common: "Ubuntu", "Times New Roman", serif;
+  --font-family-monospace: "Ubuntu Mono", monospace;
+  --surface-background: #fefaf4;
+  --on-surface: #79988b;
+  --background: #fffaee;
+  --default-color: #6a6458;
+  --revert-color: #efede9;
+  --eyebrow-color: #866e4f;
+}

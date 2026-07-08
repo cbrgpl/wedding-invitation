@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Женский дресскод">
+  <circle cx="64" cy="64" r="54" fill="none" stroke="#6a6458" stroke-width="4"/>
+  <path d="M58 30h12l8 16-7 16 18 38H39l18-38-7-16 8-16z" fill="none" stroke="#6a6458" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M50 46c5 3 9 4 14 4s9-1 14-4" fill="none" stroke="#6a6458" stroke-width="4" stroke-linecap="round"/>
+  <path d="M57 62h14" fill="none" stroke="#6a6458" stroke-width="4" stroke-linecap="round"/>
+  <path d="M49 100c4-10 8-25 15-38 7 13 11 28 15 38" fill="none" stroke="#6a6458" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
+  <path d="M58 30c0 8 2 14 6 20 4-6 6-12 6-20" fill="none" stroke="#6a6458" stroke-width="4" stroke-linejoin="round"/>
+</svg>
