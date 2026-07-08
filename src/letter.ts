@@ -229,7 +229,6 @@ const showPageInstantly = () => {
 
 let letterOrnamentActivated = false
 const handleLetterOrnamentClick = (event: MouseEvent) => {
-  console.log(event, event.target)
   const target = event.currentTarget
 
   if(!(target instanceof SVGElement)) {
@@ -260,7 +259,6 @@ const handleLetterOrnamentClick = (event: MouseEvent) => {
     await animate(letter, 'fade-y', 'out')
     const app = document.querySelector('#app')
     if(app) {
-      console.log('app')
       app.classList.remove('letter-stage')
     }
     letter.style.display = 'none'
@@ -323,7 +321,6 @@ const mockMain = () => {
 }
 
 if(isMockMode()) {
-  console.log('is mock')
   mockMain()
 } else {
   main()
