@@ -38,6 +38,7 @@ enum TextBlockId {
 
 const isTextBlockId = ( v: string ): v is TextBlockId => v === TextBlockId.RELATES ||
 v === TextBlockId.WIFE_FAMILY ||
+v === TextBlockId.FRIENDS ||
 v === TextBlockId.HUSBAND_FAMILY || 
 v === TextBlockId.KIRILL || 
 v === TextBlockId.MIWA || 
@@ -157,6 +158,7 @@ const createLeadParagraph = ( text: string ) => {
 
 const prepareLetterForWhois = () => {
   const textBlockId = parseTextBlockId()
+  console.log(textBlockId)
   const textBlock = textBlocks[textBlockId];
 
   const { titleAdj, titleNoun } = getTitle(textBlock)
