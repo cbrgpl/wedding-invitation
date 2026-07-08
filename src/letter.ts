@@ -93,7 +93,7 @@ const textBlocks: Record<TextBlockId, TextBlock> = {
     ]
   },
   [TextBlockId.FRIENDS]: {
-    title: 'Ну что, друзья!',
+    title: 'Штош друзья',
     description: [
       "Кажется, всё зашло слишком далеко… 😄",
       "Мы женимся!",
