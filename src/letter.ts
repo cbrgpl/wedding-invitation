@@ -29,6 +29,7 @@ enum TextBlockId {
   WIFE_FAMILY = 'wfm',
   FRIENDS = 'wfrs',
   HUSBAND_FAMILY = 'hfm',
+  HUSBAND_SISTER = 'hsus',
   KIRILL = 'krl',
   MIWA = 'mw',
   PAKINYA = 'pk',
@@ -40,6 +41,7 @@ const isTextBlockId = ( v: string ): v is TextBlockId => v === TextBlockId.RELAT
 v === TextBlockId.WIFE_FAMILY ||
 v === TextBlockId.FRIENDS ||
 v === TextBlockId.HUSBAND_FAMILY || 
+v === TextBlockId.HUSBAND_SISTER ||
 v === TextBlockId.KIRILL || 
 v === TextBlockId.MIWA || 
 v === TextBlockId.PAKINYA || 
@@ -69,6 +71,15 @@ const textBlocks: Record<TextBlockId, TextBlock> = {
     description: [
       'C большой радостью приглашаем тебя на нашу свадьбу. В этот особенный день нам очень важно видеть рядом самых близких людей, и твоё присутствие будет для нас особенно дорогим.',
       'Спасибо тебе за любовь, заботу и поддержку, которые всегда были рядом с нами. Мы будем счастливы разделить с тобой этот важный момент и начать новую семейную главу нашей жизни с твоего благословении. ❤️'
+    ]
+  },
+  [TextBlockId.HUSBAND_SISTER]: {
+    title: 'Дорогая Сестра',
+    description: [
+      'Хочу пригласить тебя на нашу свадьбу.',
+      'Мне очень жаль, что ты не сможешь приехать лично, но мы обязательно постараемся сделать всё возможное, чтобы ты тоже почувствовала себя частью этого важного для нас дня.',
+      'Ты очень дорога мне, и даже на расстоянии твоё присутствие, поддержка и тёплые слова будут для нас особенно важны.',
+      'Будем очень рады разделить с тобой этот момент хотя бы онлайн и почувствовать, что ты рядом с нами.'
     ]
   },
   [TextBlockId.KIRILL]: {
