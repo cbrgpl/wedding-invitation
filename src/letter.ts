@@ -3,7 +3,7 @@ import { animate, wait } from "./utils";
 
 const TEXT_BLOCK_ID_QUERY = 'whoami'
 const MOCK_QUERY = 'mock'
-const NO_LETTER_ORNAMENT_QUERY = 'nmor'
+const NO_WEDDING_ONLY_HOUSE = 'nmor'
 const LETTER_ORNAMENT_ACTIVATION_DELAY = 1250;
 
 const selectors = {
@@ -16,6 +16,7 @@ const selectors = {
   titleNoun: '.letter-title-noun',
   insertLeadsAnchor: '.letter-lead-anchor',
   preloaderWrapper: '#preloader-wrapper',
+  weddingDetails: '#insert-leads-anchor'
 } as const;
 
 const classes = {
@@ -111,7 +112,6 @@ const textBlocks: Record<TextBlockId, TextBlock> = {
       "Мы женимся!",
       "Очень хотим провести этот день вместе с вами — смеяться, танцевать, обниматься и создавать воспоминания, которые ещё много лет будем вспоминать с улыбкой.",
       "Берите хорошее настроение — остальное мы уже подготовили. ❤️",
-      "Встречаемся 22 августа около 16:00 по адресу Новосибирская область, ​с. Ленинское, Улица Мичурина, 60а"
     ]
   },
   [TextBlockId.AKIM]: {
@@ -145,10 +145,10 @@ const isMockMode = () => {
   return params.has(MOCK_QUERY)
 }
 
-const isLetterOrnamentDisabled = () => {
+const isOnlyHouseInvitation = () => {
   const params = new URLSearchParams(window.location.search);
 
-  return params.has(NO_LETTER_ORNAMENT_QUERY)
+  return params.has(NO_WEDDING_ONLY_HOUSE)
 }
 
 const getTitle = ( textBlock: TextBlock ) => {
@@ -169,7 +169,6 @@ const createLeadParagraph = ( text: string ) => {
 
 const prepareLetterForWhois = () => {
   const textBlockId = parseTextBlockId()
-  console.log(textBlockId)
   const textBlock = textBlocks[textBlockId];
 
   const { titleAdj, titleNoun } = getTitle(textBlock)
@@ -177,6 +176,13 @@ const prepareLetterForWhois = () => {
   const titleAdjEl = document.querySelector(selectors.titleAdj)
   const titleNounEl = document.querySelector(selectors.titleNoun)
   
+  if(isOnlyHouseInvitation()) {
+    textBlock.description.push(...[
+      'Встречаемся по адресу Новосибирская область, с. Каменка, Содружество, ул. Содружество, 22',
+      'https://2gis.ru/novosibirsk/geo/141373143689378/83.070863%2C55.09793?m=83.081329%2C55.098044%2F14.99'
+    ])
+  }
+
   const leadFragment = document.createDocumentFragment();
   leadFragment.append(
     ...textBlock.description.map(createLeadParagraph)
@@ -194,6 +200,16 @@ const prepareLetterForWhois = () => {
 
   if(insertLeadsAnchorEl) {
     insertLeadsAnchorEl.before(leadFragment)
+  }
+}
+
+const prepareLetterForNmor = () => {
+  if(isOnlyHouseInvitation()) {
+    const weddingDetails = document.querySelector(selectors.weddingDetails) as HTMLElement | null
+    console.log(weddingDetails)
+    if(weddingDetails) {
+      weddingDetails.style.display = 'none'
+    }
   }
 }
 
@@ -282,7 +298,7 @@ const handleLetterOrnamentClick = (event: MouseEvent) => {
 
 const addLetterOrnamentHandler = () => {
   const letterOrnament = document.querySelector(selectors.letterOrnament) as HTMLElement
-  if(letterOrnament && !isLetterOrnamentDisabled()) {
+  if(letterOrnament && !isOnlyHouseInvitation()) {
     letterOrnament.addEventListener('click', handleLetterOrnamentClick)
   }
 }
@@ -315,6 +331,7 @@ const closeLetterInstantly = () => {
 
 const main = async () => {
   prepareLetterForWhois()
+  prepareLetterForNmor()
   addLetterOrnamentHandler()
   await waitForInitialAssets()
   await hidePreloader()
