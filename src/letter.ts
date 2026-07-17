@@ -167,6 +167,8 @@ const createLeadParagraph = ( text: string ) => {
   return paragraphEl
 }
 
+const houseLocationUrl = 'https://2gis.ru/novosibirsk/geo/141373143689378/83.070863%2C55.09793?m=83.081329%2C55.098044%2F14.99'
+
 const prepareLetterForWhois = () => {
   const textBlockId = parseTextBlockId()
   const textBlock = textBlocks[textBlockId];
@@ -176,16 +178,25 @@ const prepareLetterForWhois = () => {
   const titleAdjEl = document.querySelector(selectors.titleAdj)
   const titleNounEl = document.querySelector(selectors.titleNoun)
   
-  if(isOnlyHouseInvitation()) {
-    textBlock.description.push(...[
-      'Встречаемся по адресу Новосибирская область, с. Каменка, Содружество, ул. Содружество, 22. Заселение 21 августа в 15:00!',
-      'https://2gis.ru/novosibirsk/geo/141373143689378/83.070863%2C55.09793?m=83.081329%2C55.098044%2F14.99'
-    ])
+  const createLink = () => {
+    const a = document.createElement('a')
+    a.href = houseLocationUrl
+    a.target = '_blank'
+    a.rel = 'noopener noreferrer'
+    a.textContent = houseLocationUrl
+    a.style.color = 'currentColor'
+    a.style.wordBreak = 'break-all'
+    a.classList.add(classes.lead)
+    return a
   }
 
   const leadFragment = document.createDocumentFragment();
   leadFragment.append(
-    ...textBlock.description.map(createLeadParagraph)
+    ...textBlock.description.map(createLeadParagraph),
+    ...(isOnlyHouseInvitation() ? [
+      createLeadParagraph('Встречаемся по адресу Новосибирская область, с. Каменка, Содружество, ул. Содружество, 22'),
+      createLink()
+    ] : [])
   );
 
   const insertLeadsAnchorEl = document.querySelector(selectors.insertLeadsAnchor);
@@ -206,7 +217,6 @@ const prepareLetterForWhois = () => {
 const prepareLetterForNmor = () => {
   if(isOnlyHouseInvitation()) {
     const weddingDetails = document.querySelector(selectors.weddingDetails) as HTMLElement | null
-    console.log(weddingDetails)
     if(weddingDetails) {
       weddingDetails.style.display = 'none'
     }
